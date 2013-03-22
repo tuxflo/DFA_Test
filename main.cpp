@@ -6,7 +6,7 @@
 using namespace std;
 
 //The function delta_hat represents the transition function
-int delta_hat(int array[][4], std::string sigma, int state, std::string word, int error)
+int delta_hat(int array[][3], std::string sigma, int state, std::string word, int error)
 {
     int number = -1;
     if(word.empty())
@@ -31,12 +31,11 @@ int delta_hat(int array[][4], std::string sigma, int state, std::string word, in
 
 int main()
 {
-                           //z0 z1 z2 zE
-    int array[3][4] = {/*a*/ {1, 1, 1, 3},
-                       /*b*/ {0, 2, 0, 3},
-                       /*c*/ {0, 0, 3, 3}};
+                           //z0 z1 z2
+    int array[2][3] = {/*a*/ {0, 1, 0},
+                       /*b*/ {1, 2, 1}};
 
-    std::string sigma = "abc";
+    std::string sigma = "01";
 
     cout << "Please enter the word to check:" << endl;
     std::string word;
@@ -48,7 +47,7 @@ int main()
     case -1:
         cout << "Error while parsing word" << endl;
         break;
-    case 3:
+    case 2:
         cout << "word accepted!" << endl;
         break;
     default:
