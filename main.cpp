@@ -1,14 +1,12 @@
 //This is an example on a deterministic finite state machine with a 2D Array
 //The machine accepts all words containing the sequence "abc" in a given string
 
-//TODO show which character is not in sigma (maybe like in clang compiler ^)
-
 #include <iostream>
 #include <string>
 using namespace std;
 
 //The function delta_hat represents the transition function
-int delta_hat(int array[][4], std::string sigma, int state, std::string word)
+int delta_hat(int array[][4], std::string sigma, int state, std::string word, int error)
 {
     int number = -1;
     if(word.empty())
@@ -20,12 +18,15 @@ int delta_hat(int array[][4], std::string sigma, int state, std::string word)
     }
     if(number == -1)
     {
+        for(int i=0; i< error; i++)
+            cout << " ";
+        cout << "^" << endl;
         cout << "word contents undefined symbol!" << endl;
         return -1;
     }
     state = array[number][state];
     word = word.substr(1, word.length()); //word is shortend by the first char
-    return delta_hat(array, sigma, state, word);
+    return delta_hat(array, sigma, state, word, ++error);
 }
 
 int main()
@@ -37,11 +38,11 @@ int main()
 
     std::string sigma = "abc";
 
-    cout << "Please enter the word to check:" << endl << cout << ":>";
+    cout << "Please enter the word to check:" << endl;
     std::string word;
     cin >> word; //Read the word to check
 
-    int test = delta_hat(array, sigma, 0, word);
+    int test = delta_hat(array, sigma, 0, word, 0);
     switch(test)
     {
     case -1:
