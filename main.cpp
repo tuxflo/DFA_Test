@@ -1,5 +1,5 @@
 //This is an example on a deterministic finite state machine with a 2D Array
-//The machine accepts all words containing the sequence "abc" in a given string
+//The machine accepts all words ending by the sequence "ananas" in a given string
 
 #include <iostream>
 #include <string>
