@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-//The function delta_hat represents the transition function
+//The recursive function delta_hat represents the transition function
 int delta_hat(int array[][7], std::string sigma, int state, std::string word, int error)
 {
     int number = -1;
@@ -40,7 +40,7 @@ int main()
 
     cout << "Please enter the word to check:" << endl;
     std::string word;
-    cin >> word; //Read the word to check
+    cin >> word;
 
     int test = delta_hat(array, sigma, 0, word, 0);
     switch(test)
