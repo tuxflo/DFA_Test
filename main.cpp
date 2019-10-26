@@ -6,7 +6,8 @@
 using namespace std;
 
 //The recursive function delta_hat represents the transition function
-int delta_hat(int array[][7], std::string sigma, int state, std::string word, int error)
+
+int delta_hat(int array[][4], std::string sigma, int state, std::string word, int error)
 {
     int number = -1;
     if(word.empty())
