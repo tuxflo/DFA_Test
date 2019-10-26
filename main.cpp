@@ -1,11 +1,12 @@
 //This is an example on a deterministic finite state machine with a 2D Array
-//The machine accepts all words containing the sequence "abc" in a given string
+//The machine accepts all words ending by the sequence "ananas" in a given string
 
 #include <iostream>
 #include <string>
 using namespace std;
 
 //The recursive function delta_hat represents the transition function
+
 int delta_hat(int array[][4], std::string sigma, int state, std::string word, int error)
 {
     int number = -1;
@@ -31,16 +32,16 @@ int delta_hat(int array[][4], std::string sigma, int state, std::string word, in
 
 int main()
 {
-                           //z0 z1 z2 zE
-    int array[3][4] = {/*a*/ {1, 1, 1, 3},
-                       /*b*/ {0, 2, 0, 3},
-                       /*c*/ {0, 0, 3, 3}};
+                           //z0 z1 z2 z3 z4 z5 zE
+    int array[3][7] = {/*a*/ {1, 1, 3, 1, 5, 1, 1},
+                       /*n*/ {0, 2, 0, 4, 0, 4, 0},
+                       /*s*/ {0, 0, 0, 0, 0, 6, 0}};
 
-    std::string sigma = "abc";
+    std::string sigma = "ans";
 
     cout << "Please enter the word to check:" << endl;
     std::string word;
-    cin >> word; //Read the word to check
+    cin >> word;
 
     int test = delta_hat(array, sigma, 0, word, 0);
     switch(test)
@@ -48,8 +49,8 @@ int main()
     case -1:
         cout << "Error while parsing word" << endl;
         break;
-    case 3:
-        cout << "word accepted!" << endl;
+    case 6:
+       cout << "word accepted!" << endl;
         break;
     default:
         cout << "word not accepted!" << endl;
